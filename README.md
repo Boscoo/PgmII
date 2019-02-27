@@ -1,5 +1,5 @@
 # PgmII
-(Vaiiiiiii)Oiee!(Eiiii)
+Oiee!
 IFC prgramação
 Bom diaa!!
 2019 pesadão!!
