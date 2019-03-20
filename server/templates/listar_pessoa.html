@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <title>Lista de pessoas</title>
+    </head>
+    <body>
+        <h1>Lista de pessoas</h1>
+	<br>
+	{% for p in pessoa:%}
+    {{p.nome}} | 
+    {{p.endereco}}<br>
+	{%endfor%}
+        <hr>
+        <a href="form_inserir_pessoa.html">Inserir pessoa</a>
+        <br>
+        <br>
+        <a href="form_alterar_pessoa.html">Alterar pessoa</a>
+    </body>
+</html>
