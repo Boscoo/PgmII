@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang=pt-br>
     <head>
-        <meta charset="utf-8" />
+        <meta charset=utf-8 />
         <title>Inserir pessoa</title>
     </head>
     <body>
         <h1>Inserir pessoa</h1>
         <hr>
-        <a href="exibir_mensagem.html">Confirmar</a>
+	<form action=/adicionar_pessoa>
+        Nome: <input type=Text name=nome>
+        Endereço: <textarea name=endereco></textarea>
+        Telefone: <input type=text name=telefone>
+        <input type=submit value=Salvar>
+    </form>
+        <a href=exibir_mensagem.html>Confirmar</a>
     </body>
 </html>
