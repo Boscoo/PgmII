@@ -17,10 +17,12 @@ def insert():
 
 @app.route("/adicionar_pessoa")
 def add():
-        nome = request.args.get("nome")
-        endereco = request.args.get("endereco")
-        telefone = request.args.get("telefone")
-        identificacao = Pessoa(nome, endereco, telefone)
-        lista.append(identificacao)
-        return render_template("exibir_mensagem.html")
+		nome = request.args.get("nome")
+		endereco = request.args.get("endereco")
+		telefone = request.args.get("telefone")
+		identificacao = Pessoa(nome, endereco, telefone)
+		lista.append(identificacao)
+		lista.append(Pessoa.actualizar(identificacao))
+		Pessoa.arquivar(identificacao)
+		return render_template("exibir_mensagem.html")
 app.run(host="0.0.0.0")
