@@ -10,7 +10,8 @@
 	{% for p in pessoa:%}
     {{p.nome}} | 
     {{p.endereco}} |
-    {{p.telefone}}<br>
+    {{p.telefone}} <a href=/excluir_pessoa?cod={{p.n_registro}}>x</a>
+    <br>
 	{%endfor%}
         <hr>
         <a href=/form_inserir_pessoa>Inserir pessoa</a>

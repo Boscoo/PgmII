@@ -17,12 +17,23 @@ def insert():
 
 @app.route("/adicionar_pessoa")
 def add():
-		nome = request.args.get("nome")
-		endereco = request.args.get("endereco")
-		telefone = request.args.get("telefone")
-		identificacao = Pessoa(nome, endereco, telefone)
-		lista.append(identificacao)
-		lista.append(Pessoa.actualizar(identificacao))
-		Pessoa.arquivar(identificacao)
-		return render_template("exibir_mensagem.html")
+	n_registro = request.args.get("nreg")
+	nome = request.args.get("nome")
+	endereco = request.args.get("endereco")
+	telefone = request.args.get("telefone")
+	identificacao = Pessoa(n_registro, nome, endereco, telefone)
+	lista.append(identificacao)
+	return render_template("exibir_mensagem.html")
+
+@app.route("/excluir_pessoa")
+def remover():
+	item = None
+	cod = request.args.get("cod")
+	for p in lista:
+		if cod == p.n_registro:
+			item = p
+			break
+	if item != None:
+		lista.remove(item)
+	return listar()
 app.run(host="0.0.0.0")
