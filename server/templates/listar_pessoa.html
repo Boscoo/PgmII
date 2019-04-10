@@ -10,13 +10,11 @@
 	{% for p in pessoa:%}
     {{p.nome}} | 
     {{p.endereco}} |
-    {{p.telefone}} <a href=/excluir_pessoa?cod={{p.n_registro}}>x</a>
+    {{p.telefone}} <a href=/excluir_pessoa?cod={{p.n_registro}}>X</a> <a href=/form_alterar_pessoa?cod={{p.n_registro}}>A</a>
     <br>
 	{%endfor%}
         <hr>
         <a href=/form_inserir_pessoa>Inserir pessoa</a>
         <br>
-        <br>
-        <a href="form_alterar_pessoa.html">Alterar pessoa</a>
     </body>
 </html>

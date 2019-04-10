@@ -1,5 +1,5 @@
 from pessoa import Pessoa
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 lista = []
 app = Flask(__name__)
@@ -35,5 +35,16 @@ def remover():
 			break
 	if item != None:
 		lista.remove(item)
-	return listar()
-app.run(host="0.0.0.0")
+	return redirect(url_for("listar"))
+
+@app.route("/form_alterar_pessoa")
+def alt():
+	return render_template("form_alterar_pessoa.html", pessoa=lista)
+
+@app.route("/alterar_pessoa")
+def alterar():
+	pessoa = request.args.get("cod")
+	# n_pessoa = 
+
+app.run(host="0.0.0.0", debug=True)
+

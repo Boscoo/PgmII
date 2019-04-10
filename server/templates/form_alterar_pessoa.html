@@ -7,6 +7,14 @@
     <body>
         <h1>Alterar pessoa</h1>
         <hr>
-        <a href="exibir_mensagem.html">Confirmar</a>
+        {% for p in pessoa: %}
+        <form action=/alterar_pessoa>
+        	Número de registro: <input type=text name=nreg value={{p.n_registro}}>
+        	Nome: <input type=Text name=nome value={{p.nome}}>
+        	Endereço: <input name=endereco value={{p.endereco}}>
+        	Telefone: <input type=text name=telefone value={{p.telefone}}>
+        	<input type=submit value=Salvar>
+    	</form>
+    	{% endfor %}
     </body>
 </html>
