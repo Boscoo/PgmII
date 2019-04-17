@@ -7,14 +7,12 @@
     <body>
         <h1>Alterar pessoa</h1>
         <hr>
-        {% for p in lista: %}
         <form action=/alterar_pessoa>
-        	Número de registro: <input type=text name=nreg value={{p.n_registro}}>
-        	Nome: <input type=Text name=nome value={{p.nome}}>
-        	Endereço: <input name=endereco value={{p.endereco}}>
-        	Telefone: <input type=text name=telefone value={{p.telefone}}>
+        	Número de registro: <input type=text name=nreg value={{pessoa.n_registro}}>
+        	Nome: <input type=Text name=nome value={{pessoa.nome}}>
+        	Endereço: <input name=endereco value={{pessoa.endereco}}>
+        	Telefone: <input type=text name=telefone value={{pessoa.telefone}}>
         	<input type=submit value=Salvar>
     	</form>
-    	{% endfor %}
     </body>
 </html>

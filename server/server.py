@@ -35,10 +35,11 @@ def remove_person():
 			break
 	if item != None:
 		lista.remove(item)
-	return redirect(url_for("listar"))
+	return redirect(url_for("list_person"))
 
 @app.route("/form_alterar_pessoa")
 def form_alter():
+	pe = None
 	cod=request.args.get("cod")
 	for pe in lista:
 		if pe.n_registro == cod:
@@ -47,15 +48,15 @@ def form_alter():
 
 @app.route("/alterar_pessoa")
 def alter_person():
-	nreg = request.args.get("cod")
+	nreg = request.args.get("nreg")
 	nome = request.args.get("nome")
 	endereco = request.args.get("endereco")
 	telefone = request.args.get("telefone")
 	novo = Pessoa(nreg, nome, endereco, telefone)
 	for i in range(len(lista)):
-		lista[i].n_registro == nreg
-		lista[i] = novo
-		return redirect(url_for("list_person"))
+		if lista[i].n_registro == nreg:
+			lista[i] = novo
+			return redirect(url_for("list_person"))
 	return "Deu ruim!"
 
 app.run(host="0.0.0.0", debug=True)
