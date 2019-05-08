@@ -1,8 +1,11 @@
 from pessoa import Pessoa
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 
 lista = []
 app = Flask(__name__)
+
+app.config["secret_key"] = "7541"
+
 @app.route("/")
 def start():
         return render_template("inicio.html")
@@ -58,6 +61,21 @@ def alter_person():
 			lista[i] = novo
 			return redirect(url_for("list_person"))
 	return "Deu ruim!"
+
+@app.route("/form_login")
+def form_login():
+	return render_template("form_login.html")
+
+@app.route("/login")
+def login():
+	nome = request.args.get("nome")
+	senha = request.args.get("senha")
+	if nome == "gustavo" and senha == "123":
+		session['usuario'] = nome
+		return redirect("/listar_pessoa")
+	else:
+		return redirect("/form_login")
+
 
 app.run(host="0.0.0.0", debug=True)
 
