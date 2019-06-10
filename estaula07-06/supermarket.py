@@ -1,20 +1,20 @@
 from peewee import *
 
-db = 
+db = SqliteDatabase('supermarket.db')
 
-class Produto():
-    nomProduto = CharField()
-    valorProduto = FloatField()
+class Product():
+    namProduct = CharField()
+    valueProduct = FloatField()
 
 class Item():
-    produto = ForeignKeyField(Produto)
-    qtd = FloatField()
+    product = ForeignKeyField(Product)
+    amount = FloatField()
 
-class Carrinho():
-    denCarrinho = CharField()
+class Cart():
+    denCart = CharField()
 
-class ItemdoCarrinho():
-    carrinho = ForeignKeyField(Carrinho)
+class CartItem():
+    cart = ForeignKeyField(Cart)
     item = ForeignKeyField(Item)
 
 class BaseModel(Model):
