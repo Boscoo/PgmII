@@ -1,4 +1,4 @@
-from pessoa import Pessoa
+from pessoa import *
 from flask import Flask, render_template, request, redirect, url_for, session
 
 lista = []
@@ -12,7 +12,7 @@ def start():
 
 @app.route("/listar_pessoa")
 def list_person():
-        return render_template("listar_pessoa.html", pessoa=lista)
+        return render_template("listar_pessoa.html", pessoa=Pessoa.select())
 
 @app.route("/form_inserir_pessoa")
 def form_insert():
@@ -20,11 +20,11 @@ def form_insert():
 
 @app.route("/adicionar_pessoa")
 def add_person():
-	n_registro = request.args.get("nreg")
+	n= request.args.get("nreg")
 	nome = request.args.get("nome")
 	endereco = request.args.get("endereco")
 	telefone = request.args.get("telefone")
-	identificacao = Pessoa(n_registro, nome, endereco, telefone)
+	identificacao = Pessoa.create(n_registro=n, nome=nome, endereco=endereco, telefone=telefone)
 	lista.append(identificacao)
 	return render_template("exibir_mensagem.html")
 
