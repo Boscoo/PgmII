@@ -8,7 +8,6 @@ class BaseModel(Model):
 		database = db
 
 class Pessoa(BaseModel):
-	n_registro = PrimaryKeyField()
 	nome = CharField()
 	endereco = CharField() 
 	telefone = CharField()

@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 lista = []
 app = Flask(__name__)
 
-app.config["secret_key"] = "7541"
+app.secret_key = '7541'
 
 @app.route("/")
 def start():
@@ -18,7 +18,7 @@ def list_person():
 def form_insert():
         return render_template("form_inserir_pessoa.html")
 
-@app.route("/adicionar_pessoa")
+@app.route("/adicionar_pessoa")	
 def add_person():
 	n= request.args.get("nreg")
 	nome = request.args.get("nome")
@@ -30,14 +30,7 @@ def add_person():
 
 @app.route("/excluir_pessoa")
 def remove_person():
-	item = None
-	cod = request.args.get("cod")
-	for p in lista:
-		if cod == p.n_registro:
-			item = p
-			break
-	if item != None:
-		lista.remove(item)
+	pessoa.delete_by_id(request.args.get("id"))
 	return redirect(url_for("list_person"))
 
 @app.route("/form_alterar_pessoa")
@@ -77,5 +70,6 @@ def login():
 		return redirect("/form_login")
 
 
-app.run(host="0.0.0.0", debug=True)
+app.run(debug=True)
 
+#host="0.0.0.0"
