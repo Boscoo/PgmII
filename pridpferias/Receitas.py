@@ -1,9 +1,15 @@
 from peewee import *
 
 class Ingrediente:
-    Nome = CharField()
+    idIng = PrimaryKeyField()
+    nome = CharField()
 
 class Receita:
-    Nome = CharField()
-    ComoFazer = CharField()
-    Ingrdientes = ForeignKeyField(Ingrediente)
+    idrec = PrimaryKeyField()
+    nome = CharField()
+    comoFazer = CharField()
+
+class IngredienteDaReceita:
+    receita = ForeignKeyField(Receita)
+    ingrediente = ForeignKeyField(Ingrediente)
+    quantidade = CharField()
