@@ -1,6 +1,6 @@
 from peewee import *
 
-arq = 'pessoas.db'
+arq = './pessoas.db'
 db = SqliteDatabase(arq)
 
 class BaseModel(Model):
@@ -16,6 +16,6 @@ if __name__ == '__main__':
     db.connect()
     db.create_tables([Pessoa])
     joao = Pessoa.create(nome="Joao Paulo",
-        endereco="Rua nº0", telefone="3333-7070")
+        endereco="Rua n0", telefone="3333-7070")
     print(joao.nome, ",", joao.endereco, ",", joao.telefone)
 
